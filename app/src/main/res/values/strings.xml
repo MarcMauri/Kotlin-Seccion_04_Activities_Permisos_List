@@ -16,4 +16,7 @@
     <string name="button_multi_1">Multiple Buttons 1</string>
     <string name="button_multi_2">Multiple Buttons 2</string>
     <string name="button_multi_3">Multiple Buttons 3</string>
+
+    <string name="button_kat_id">Button by FindViewById</string>
+    <string name="button_kat_kat">Button by KAT</string>
 </resources>
