@@ -1,5 +1,6 @@
 package es.marcmauri.seccion_04_activities_permisos_list.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,8 @@ class IntentExtrasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intent_extras)
+
+        buttonBack.setOnClickListener { startActivity(Intent(this, IntentsActivity::class.java)) }
 
         getIntentExtrasFromPreviousActivity()
     }
