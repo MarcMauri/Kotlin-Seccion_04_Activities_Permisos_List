@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import es.marcmauri.seccion_04_activities_permisos_list.R
+import es.marcmauri.seccion_04_activities_permisos_list.others.LifeCycleEventsActivity
 
 class LifeCycleActivity : LifeCycleEventsActivity() {
 

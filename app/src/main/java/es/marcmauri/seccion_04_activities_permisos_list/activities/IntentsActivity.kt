@@ -1,17 +1,20 @@
 package es.marcmauri.seccion_04_activities_permisos_list.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import es.marcmauri.seccion_04_activities_permisos_list.R
 import es.marcmauri.seccion_04_activities_permisos_list.models.Student
+import es.marcmauri.seccion_04_activities_permisos_list.others.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_intents.*
 
-class IntentsActivity : AppCompatActivity() {
+class IntentsActivity : ToolbarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intents)
+
+        toolbarToLoad(toolbar as Toolbar)
 
         val btnExtras = buttonIntentExtras
         val btnFlags = buttonIntentFlags

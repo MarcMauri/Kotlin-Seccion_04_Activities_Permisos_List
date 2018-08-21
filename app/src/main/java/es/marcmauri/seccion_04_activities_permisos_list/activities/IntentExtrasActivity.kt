@@ -1,25 +1,24 @@
 package es.marcmauri.seccion_04_activities_permisos_list.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.View
 import es.marcmauri.seccion_04_activities_permisos_list.R
 import es.marcmauri.seccion_04_activities_permisos_list.models.Student
+import es.marcmauri.seccion_04_activities_permisos_list.others.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_intent_extras.*
 
-class IntentExtrasActivity : AppCompatActivity() {
+class IntentExtrasActivity : ToolbarActivity() {
 
-    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intent_extras)
 
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        // Usamos la ToolbarActivity la cual implementamos
+        toolbarToLoad(toolbar as Toolbar)
+        enablehomeDisplay(true)
 
         buttonBack.setOnClickListener { startActivity(Intent(this, IntentsActivity::class.java)) }
 
@@ -46,7 +45,7 @@ class IntentExtrasActivity : AppCompatActivity() {
     private fun setIntentExtrasFromPreviousActivity(): Boolean {
         val name: String? = intent.getStringExtra("name")
         val lastName: String? = intent.getStringExtra("lastName")
-        val age: Int = intent.getIntExtra("age",-1)
+        val age: Int = intent.getIntExtra("age", -1)
         val developer: Boolean = intent.getBooleanExtra("developer", false)
 
         if (name != null && lastName != null && age >= 0) {

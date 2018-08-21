@@ -1,19 +1,21 @@
 package es.marcmauri.seccion_04_activities_permisos_list.activities
 
-import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import es.marcmauri.seccion_04_activities_permisos_list.R
+import es.marcmauri.seccion_04_activities_permisos_list.others.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_picasso.*
 import java.lang.Exception
 
-class PicassoActivity : AppCompatActivity() {
+class PicassoActivity : ToolbarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_picasso)
+
+        toolbarToLoad(toolbar as Toolbar)
 
         buttonLoader.setOnClickListener { loadImages() }
 
@@ -43,7 +45,7 @@ class PicassoActivity : AppCompatActivity() {
 
         Picasso.get()
                 .load("https://static.pexels.com/photos/288929/pexels-photo-288929.jpeg")
-                .fetch(object: Callback {
+                .fetch(object : Callback {
                     override fun onSuccess() {
                         imageViewBottom.alpha = 0f // Marcamos el imageView como transparente
 

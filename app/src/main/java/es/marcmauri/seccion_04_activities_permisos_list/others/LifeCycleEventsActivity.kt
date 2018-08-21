@@ -1,4 +1,4 @@
-package es.marcmauri.seccion_04_activities_permisos_list.activities
+package es.marcmauri.seccion_04_activities_permisos_list.others
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

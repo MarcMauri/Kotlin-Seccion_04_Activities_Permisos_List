@@ -4,22 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.Button
 import android.widget.Toast
 import es.marcmauri.seccion_04_activities_permisos_list.activities.*
+import es.marcmauri.seccion_04_activities_permisos_list.others.ToolbarActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var toolbar: Toolbar
+class MainActivity : ToolbarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        toolbarToLoad(toolbar as Toolbar)
 
         val btnLifeCycle = findViewById<Button>(R.id.button_to_cycle)
         val btnClickEvents = findViewById<Button>(R.id.button_to_click)
