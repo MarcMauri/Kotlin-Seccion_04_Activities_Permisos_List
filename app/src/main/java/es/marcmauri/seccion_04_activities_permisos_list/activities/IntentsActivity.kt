@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import es.marcmauri.seccion_04_activities_permisos_list.R
+import es.marcmauri.seccion_04_activities_permisos_list.models.Student
 import kotlinx.android.synthetic.main.activity_intents.*
 
 class IntentsActivity : AppCompatActivity() {
@@ -41,6 +42,8 @@ class IntentsActivity : AppCompatActivity() {
 
     private fun goIntentObject() {
         val intent = Intent(this, IntentExtrasActivity::class.java)
+        val student = Student("Marc", "Mauri", 25, false)
+        intent.putExtra("student", student)
         startActivity(intent)
     }
 }
