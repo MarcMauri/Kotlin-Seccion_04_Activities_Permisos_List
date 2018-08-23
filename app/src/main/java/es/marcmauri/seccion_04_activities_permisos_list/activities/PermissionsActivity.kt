@@ -26,7 +26,25 @@ class PermissionsActivity : ToolbarActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permissions)
 
-        buttonPicture.setOnClickListener { getPictureFromCameraAskingPermissions() }
+        buttonPicture.setOnClickListener { getPictureFromCamera() }
+    }
+
+    private fun goToCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, requestCameraPicture)
+    }
+
+    private fun getPictureFromCamera() {
+        // 1. Asegurarnos de que no hay permiso de camara en el manifest
+        // 2. Crear intent para capturar la foto
+        val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        // 3. Comprobar que podemos manejar la captura de fotos (Tenemos camara y app de camara)
+        if (pictureIntent.resolveActivity(packageManager) != null) {
+            startActivityForResult(pictureIntent, requestCameraPicture)
+        } else {
+            // No hay activity que pueda manejar el intent (por ejemplo sin camara)
+            Toast.makeText(this, "Error with camera intent", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getPictureFromCameraAskingPermissions() {
@@ -54,11 +72,6 @@ class PermissionsActivity : ToolbarActivity() {
             }
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
-    }
-
-    private fun goToCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, requestCameraPicture)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
