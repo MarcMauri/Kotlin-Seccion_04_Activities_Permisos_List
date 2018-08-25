@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import es.marcmauri.seccion_04_activities_permisos_list.models.Person
+import es.marcmauri.seccion_04_activities_permisos_list.others.inflate
 import kotlinx.android.synthetic.main.list_view_person.view.*
 
 class PersonAdapter(val context: Context, val layout: Int, val list: List<Person>) : BaseAdapter() {
-
-    private val mInflator: LayoutInflater = LayoutInflater.from(context)
 
     override fun getItem(position: Int): Any {
         return list[position]
@@ -25,12 +24,12 @@ class PersonAdapter(val context: Context, val layout: Int, val list: List<Person
         return list.size
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: View
         val vh: PersonViewHolder
 
         if (convertView == null) {
-            view = mInflator.inflate(layout, parent, false)
+            view = parent.inflate(layout)
             vh = PersonViewHolder(view)
             view.tag = vh
         } else {
